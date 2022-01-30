@@ -13,6 +13,9 @@ public class Book {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @Column(
+        nullable = false
+    )
     private long id;
 
     @Column(name = "genre")
