@@ -1,0 +1,29 @@
+version: "3.8"
+
+services:
+    flyway:
+        image: flyway/flyway
+        env_file:
+            - .env
+        command: -locations=filesystem:/flyway/sql -connectRetries=60 clean migrate
+        environment:
+            - FLYWAY_URL=jdbc:postgresql://database:${POSTGRES_PORT}/${POSTGRES_DB}
+        volumes:
+            - ${PWD}/sql/${POSTGRES_DB}/migrations:/flyway/sql
+            - ${PWD}/sql/${POSTGRES_DB}:/flyway/conf
+        depends_on:
+            database:
+                condition: service_healthy
+    database:
+        image: 'postgres:14.1-alpine'
+        env_file:
+            - .env
+        ports:
+            - ${POSTGRES_PORT}:${POSTGRES_PORT}
+        volumes:
+            - ${PWD}/sql/postgres-data:/var/lib/postgresql/data
+        healthcheck:
+            test: [ "CMD-SHELL", "pg_isready -d ${POSTGRES_DB} -U ${POSTGRES_USER}" ]
+            interval: 10s
+            timeout: 5s
+            retries: 5
