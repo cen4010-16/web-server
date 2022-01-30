@@ -18,6 +18,9 @@ public class Book {
     @Column(name = "genre")
     private String genre;
 
+    @Column(name = "copies_sold")
+    private int copiesSold;
+
     public long getId() {
         return id;
     }
@@ -32,6 +35,14 @@ public class Book {
 
     public void setGenre(String genre) {
         this.genre = genre;
+    }
+
+    public int getCopiesSold() {
+        return copiesSold;
+    }
+
+    public void setCopiesSold(int copiesSold) {
+        this.copiesSold = copiesSold;
     }
 
 }

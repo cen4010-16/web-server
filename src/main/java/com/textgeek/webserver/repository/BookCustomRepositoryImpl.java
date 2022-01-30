@@ -24,6 +24,11 @@ public class BookCustomRepositoryImpl implements BookCustomRepository {
         int offset = 0;
         int limit = 25;
 
+        if (allParams.containsKey("top_sellers") && allParams.get("top_sellers").equalsIgnoreCase("true")) {
+            query.orderBy(qb.desc(root.get("copiesSold")));
+            limit = 10;
+        }
+
         if (allParams.containsKey("genre")) {
             query.where(qb.equal(root.get("genre"), allParams.get("genre")));
         }
@@ -35,6 +40,7 @@ public class BookCustomRepositoryImpl implements BookCustomRepository {
         if (allParams.containsKey("limit")) {
             limit = Integer.valueOf(allParams.get("limit"));
         }
+
 
         return entityManager.createQuery(query).setFirstResult(offset).setMaxResults(limit)
             .getResultList();
