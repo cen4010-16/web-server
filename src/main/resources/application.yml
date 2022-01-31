@@ -9,8 +9,6 @@ spring:
         hikari:
             max-lifetime: 600000
     jpa:
-        hibernate:
-            ddl-auto: validate
         properties:
             hibernate:
                 dialect: "org.hibernate.dialect.PostgreSQL92Dialect"
