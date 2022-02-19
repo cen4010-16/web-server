@@ -49,7 +49,9 @@ CREATE TABLE shopping_cart_books
 );
 CREATE TABLE wishlist
 (
-    id BIGSERIAL PRIMARY KEY NOT NULL
+    id BIGSERIAL PRIMARY KEY NOT NULL,
+    name    VARCHAR(30) UNIQUE NOT NULL,
+    profile_id BIGSERIAL UNIQUE NOT NULL REFERENCES profile(id)
 );
 CREATE TABLE wishlist_books
 (
@@ -58,6 +60,8 @@ CREATE TABLE wishlist_books
     CONSTRAINT FK_Wishlist FOREIGN KEY (wishlist_id) REFERENCES wishlist (id),
     CONSTRAINT FK_Wishlist_Book FOREIGN KEY (book_id) REFERENCES book (id)
 );
+INSERT INTO profile(id)
+VALUES(0);
 
 INSERT INTO book (copies_sold, genre)
 VALUES (15, 'fantasy');
@@ -107,3 +111,7 @@ INSERT INTO book (copies_sold, genre)
 VALUES (43, 'fantasy');
 INSERT INTO book (copies_sold, genre)
 VALUES (75, 'romance');
+INSERT INTO wishlist(id, name, profile_id)
+VALUES(0,'test 1' ,0);
+INSERT INTO wishlist_books(wishlist_id,book_id)
+VALUES(0,1);
