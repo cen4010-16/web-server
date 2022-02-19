@@ -21,10 +21,16 @@ CREATE TABLE book_rating
     CONSTRAINT FK_Book_Rating FOREIGN KEY (book_id) REFERENCES book (id),
     CONSTRAINT FK_Profile_Rating FOREIGN KEY (profile_id) REFERENCES profile (id)
 );
+
 CREATE TABLE book_comment
 (
-    id BIGSERIAL PRIMARY KEY NOT NULL
+    id         BIGSERIAL PRIMARY KEY NOT NULL,
+    book_id    BIGSERIAL             NOT NULL REFERENCES book (id),
+    profile_id BIGSERIAL             NOT NULL REFERENCES profile (id),
+    text       VARCHAR(280)          NOT NULL,
+    created    TIMESTAMP WITHOUT TIME ZONE DEFAULT now()
 );
+
 CREATE TABLE credit_card
 (
     id BIGSERIAL PRIMARY KEY NOT NULL
@@ -55,10 +61,9 @@ CREATE TABLE wishlist
 );
 CREATE TABLE wishlist_books
 (
-    wishlist_id BIGSERIAL NOT NULL,
-    book_id     BIGSERIAL NOT NULL,
-    CONSTRAINT FK_Wishlist FOREIGN KEY (wishlist_id) REFERENCES wishlist (id),
-    CONSTRAINT FK_Wishlist_Book FOREIGN KEY (book_id) REFERENCES book (id)
+    wishlist_id BIGSERIAL NOT NULL REFERENCES wishlist (id),
+    book_id     BIGSERIAL NOT NULL REFERENCES book (id),
+    PRIMARY KEY (wishlist_id, book_id)
 );
 INSERT INTO profile(id)
 VALUES(0);
@@ -111,7 +116,11 @@ INSERT INTO book (copies_sold, genre)
 VALUES (43, 'fantasy');
 INSERT INTO book (copies_sold, genre)
 VALUES (75, 'romance');
+
 INSERT INTO wishlist(id, name, profile_id)
 VALUES(0,'test 1' ,0);
 INSERT INTO wishlist_books(wishlist_id,book_id)
 VALUES(0,1);
+
+INSERT INTO book_comment(book_id, profile_id, text)
+VALUES (1, 0, 'Great book!')

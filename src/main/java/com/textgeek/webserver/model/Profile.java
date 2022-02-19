@@ -12,10 +12,14 @@ import javax.persistence.Table;
 public class Profile {
 
     @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @Column(
-        nullable = false
-    )
+    @GeneratedValue(strategy = GenerationType.AUTO)
+    @Column(name = "id", nullable = false)
     private long id;
 
+    @Override
+    public String toString() {
+        return "Profile{" +
+            "id=" + id +
+            '}';
+    }
 }

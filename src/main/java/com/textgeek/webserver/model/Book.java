@@ -48,4 +48,12 @@ public class Book {
         this.copiesSold = copiesSold;
     }
 
+    @Override
+    public String toString() {
+        return "Book{" +
+            "id=" + id +
+            ", genre='" + genre + '\'' +
+            ", copiesSold=" + copiesSold +
+            '}';
+    }
 }
