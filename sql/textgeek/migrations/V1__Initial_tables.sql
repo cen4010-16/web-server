@@ -11,7 +11,7 @@ CREATE TABLE profile
     street_address_2 varchar(40),
     city varchar(20) NOT NULL,
     state varchar(25) NOT NULL,
-    zip_code varchar(5) NOT NULL,
+    zip_code varchar(10) NOT NULL
 );
 
 CREATE TABLE credit_card
@@ -42,10 +42,6 @@ CREATE TABLE book
     genre varchar(30)
 );
 
-CREATE TABLE profile
-(
-    id BIGSERIAL PRIMARY KEY NOT NULL
-);
 CREATE TABLE book_rating
 (
     book_id BIGSERIAL NOT NULL,
@@ -106,9 +102,9 @@ VALUES
 INSERT INTO credit_card
 (id, number, expiration_date, cvv)
 VALUES
-(111, '5675879862768277', '05/31/2027', 453),
-(112, '5928703827890923', '04/29/2023', 903),
-(113, '4812120923228329', '02/06/2021', 127);
+(101, '5675879862768277', '05/31/2027', 453),
+(102, '5928703827890923', '04/29/2023', 903),
+(103, '4812120923228329', '02/06/2021', 127);
 
 INSERT INTO profile_credit_card
 (credit_card_id, profile_id)
@@ -166,6 +162,6 @@ VALUES (43, 'fantasy');
 INSERT INTO book (copies_sold, genre)
 VALUES (75, 'romance');
 INSERT INTO wishlist(id, name, profile_id)
-VALUES(0,'test 1' ,0);
+VALUES(0,'test 1' ,201);
 INSERT INTO wishlist_books(wishlist_id,book_id)
 VALUES(0,1);
