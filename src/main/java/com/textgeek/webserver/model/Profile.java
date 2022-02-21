@@ -10,12 +10,8 @@ import javax.persistence.Table;
 @Entity
 @Table(name = "profile")
 public class Profile {
-
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @Column(
-        nullable = false
-    )
+    @Column(nullable = false)
     private long id;
-
 }

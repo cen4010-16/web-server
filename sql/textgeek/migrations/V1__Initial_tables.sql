@@ -2,7 +2,7 @@
 
 CREATE TABLE profile
 (
-    id integer PRIMARY KEY NOT NULL,
+    id BIGSERIAL PRIMARY KEY NOT NULL,
     username varchar(40) NOT NULL,
     password varchar(40) NOT NULL,
     first_name varchar(40) NOT NULL,
@@ -16,7 +16,7 @@ CREATE TABLE profile
 
 CREATE TABLE credit_card
 (
-    id integer PRIMARY KEY NOT NULL,
+    id BIGSERIAL PRIMARY KEY NOT NULL,
     number varchar(24) NOT NULL,
     expiration_date date NOT NULL,
     cvv integer NOT NULL
@@ -32,19 +32,19 @@ CREATE TABLE profile_credit_card
 
 CREATE TABLE author
 (
-    id integer PRIMARY KEY NOT NULL
+    id BIGSERIAL PRIMARY KEY NOT NULL
 );
 
 CREATE TABLE book
 (
-    id          integer PRIMARY KEY NOT NULL,
+    id BIGSERIAL PRIMARY KEY NOT NULL,
     copies_sold integer DEFAULT 0,
-    genre       varchar(30)
+    genre varchar(30)
 );
 
 CREATE TABLE profile
 (
-    id integer PRIMARY KEY NOT NULL
+    id BIGSERIAL PRIMARY KEY NOT NULL
 );
 CREATE TABLE book_rating
 (
@@ -56,7 +56,7 @@ CREATE TABLE book_rating
 );
 CREATE TABLE book_comment
 (
-    id integer PRIMARY KEY NOT NULL,
+    id BIGSERIAL PRIMARY KEY NOT NULL,
     profile_id integer NOT NULL,
     book_id integer NOT NULL,
     date date NOT NULL,
@@ -66,7 +66,7 @@ CREATE TABLE book_comment
 
 CREATE TABLE shopping_cart
 (
-    id integer PRIMARY KEY NOT NULL,
+    id BIGSERIAL PRIMARY KEY NOT NULL,
     profile_id integer NOT NULL,
     CONSTRAINT profile_shopping_cart FOREIGN KEY (profile_id) REFERENCES profile (id)
 );
@@ -79,7 +79,7 @@ CREATE TABLE shopping_cart_books
 );
 CREATE TABLE wishlist
 (
-    id integer PRIMARY KEY NOT NULL,
+    id BIGSERIAL PRIMARY KEY NOT NULL,
     name    varchar(30) UNIQUE NOT NULL,
     profile_id integer NOT NULL,
     CONSTRAINT profile_wish_list FOREIGN KEY (profile_id) REFERENCES profile (id)
@@ -97,25 +97,25 @@ CREATE TABLE wishlist_books
 /*Test users to be tested*/
 
 INSERT INTO profile
-(id, username, "password", first_name, last_name, street_address, street_address_2, city, state, zip_code)
+(id, username, password, first_name, last_name, street_address, street_address_2, city, state, zip_code)
 VALUES
-(12, '9hasui','ThedarkRock', 'Carlos', 'Shawn', '19808 Cade Park Dr ', NULL , 'Los Suenos', 'FL', 331908),
-(14, 'uajhsy','losTinparadise', 'Mathew', 'James', '2178 Ola St', NULL, 'Pink Sky City', 'GA', 333890),
-(17, 'ausjjj','thinkinGthehardway', 'Daniel','Brown', '3589 West Holss St', NULL, 'Doortown', 'CA', 332897);
+(201, '9hasui','ThedarkRock', 'Carlos', 'Shawn', '19808 Cade Park Dr ', NULL , 'Los Suenos', 'FL', 331908),
+(202, 'uajhsy','losTinparadise', 'Mathew', 'James', '2178 Ola St', NULL, 'Pink Sky City', 'GA', 333890),
+(203, 'ausjjj','thinkinGthehardway', 'Daniel','Brown', '3589 West Holss St', NULL, 'Doortown', 'CA', 332897);
 
 INSERT INTO credit_card
 (id, number, expiration_date, cvv)
 VALUES
-    (111, 5675879862768277, '05/31/2027', 453),
-    (112, 5928703827890923, '04/29/2023', 903),
-    (113, 4812120923228329, '02/06/2021', 127);
+(111, '5675879862768277', '05/31/2027', 453),
+(112, '5928703827890923', '04/29/2023', 903),
+(113, '4812120923228329', '02/06/2021', 127);
 
 INSERT INTO profile_credit_card
 (credit_card_id, profile_id)
 VALUES
-    (101,201),
-    (102,202),
-    (103,203);
+(101,201),
+(102,202),
+(103,203);
 
 INSERT INTO book (copies_sold, genre)
 VALUES (15, 'fantasy');
