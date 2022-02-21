@@ -1,67 +1,106 @@
+/*Tables Creation*/
+
+CREATE TABLE profile
+(
+    id integer PRIMARY KEY NOT NULL,
+    username varchar(40) NOT NULL,
+    password varchar(40) NOT NULL,
+    first_name varchar(40) NOT NULL,
+    last_name varchar(40) NOT NULL,
+    street_address varchar(40) NOT NULL,
+    street_address_2 varchar(40),
+    city varchar(20) NOT NULL,
+    state varchar(25) NOT NULL,
+    zip_code varchar(5) NOT NULL,
+);
+
+CREATE TABLE credit_card
+(
+    id integer PRIMARY KEY NOT NULL,
+    number varchar(24) NOT NULL,
+    expiration_date date NOT NULL,
+    cvv integer NOT NULL
+);
+
+CREATE TABLE profile_credit_card
+(
+    credit_card_id integer NOT NULL,
+    profile_id integer NOT NULL,
+    CONSTRAINT profile_profile_credit_card FOREIGN KEY (profile_id) REFERENCES profile (id),
+    CONSTRAINT credit_card_profile_credit_card FOREIGN KEY (credit_card_id) REFERENCES credit_card (id)
+);
+
 CREATE TABLE author
 (
-    id BIGSERIAL PRIMARY KEY NOT NULL
+    id integer PRIMARY KEY NOT NULL
 );
 
 CREATE TABLE book
 (
-    id          BIGSERIAL PRIMARY KEY NOT NULL,
-    copies_sold INTEGER DEFAULT 0,
-    genre       VARCHAR(30)
+    id          integer PRIMARY KEY NOT NULL,
+    copies_sold integer DEFAULT 0,
+    genre       varchar(30)
 );
+
 CREATE TABLE profile
 (
-    id BIGSERIAL PRIMARY KEY NOT NULL
+    id integer PRIMARY KEY NOT NULL
 );
 CREATE TABLE book_rating
 (
-    book_id    BIGSERIAL NOT NULL,
-    profile_id BIGSERIAL NOT NULL,
-    rating     INTEGER,
+    book_id integer NOT NULL,
+    profile_id integer NOT NULL,
+    rating integer,
     CONSTRAINT FK_Book_Rating FOREIGN KEY (book_id) REFERENCES book (id),
     CONSTRAINT FK_Profile_Rating FOREIGN KEY (profile_id) REFERENCES profile (id)
 );
 CREATE TABLE book_comment
 (
-    id BIGSERIAL PRIMARY KEY NOT NULL
+    id integer PRIMARY KEY NOT NULL,
+    profile_id integer NOT NULL,
+    book_id integer NOT NULL,
+    date date NOT NULL,
+    description varchar(300) NOT NULL,
+    CONSTRAINT FK_Profile_Comment FOREIGN KEY (profile_id) REFERENCES profile (id)
 );
-CREATE TABLE credit_card
-(
-    id BIGSERIAL PRIMARY KEY NOT NULL
-);
-CREATE TABLE user_credit_card
-(
-    card_id    BIGSERIAL NOT NULL,
-    profile_id BIGSERIAL NOT NULL,
-    CONSTRAINT FK_Profile_Card FOREIGN KEY (profile_id) REFERENCES profile (id),
-    CONSTRAINT FK_Card_Card FOREIGN KEY (card_id) REFERENCES credit_card (id)
-);
+
 CREATE TABLE shopping_cart
 (
-    id BIGSERIAL PRIMARY KEY NOT NULL
+    id integer PRIMARY KEY NOT NULL,
+    profile_id integer NOT NULL,
+    CONSTRAINT profile_shopping_cart FOREIGN KEY (profile_id) REFERENCES profile (id)
 );
 CREATE TABLE shopping_cart_books
 (
-    shopping_cart_id BIGSERIAL NOT NULL,
-    book_id          BIGSERIAL NOT NULL,
+    shopping_cart_id integer NOT NULL,
+    book_id integer NOT NULL,
     CONSTRAINT FK_Shopping_Cart FOREIGN KEY (shopping_cart_id) REFERENCES shopping_cart (id),
     CONSTRAINT FK_Shopping_Cart_Book FOREIGN KEY (book_id) REFERENCES book (id)
 );
 CREATE TABLE wishlist
 (
-    id BIGSERIAL PRIMARY KEY NOT NULL,
-    name    VARCHAR(30) UNIQUE NOT NULL,
-    profile_id BIGSERIAL UNIQUE NOT NULL REFERENCES profile(id)
+    id integer PRIMARY KEY NOT NULL,
+    name    varchar(30) UNIQUE NOT NULL,
+    profile_id integer NOT NULL,
+    CONSTRAINT profile_wish_list FOREIGN KEY (profile_id) REFERENCES profile (id)
 );
 CREATE TABLE wishlist_books
 (
-    wishlist_id BIGSERIAL NOT NULL,
-    book_id     BIGSERIAL NOT NULL,
+    wishlist_id integer NOT NULL,
+    book_id     integer NOT NULL,
     CONSTRAINT FK_Wishlist FOREIGN KEY (wishlist_id) REFERENCES wishlist (id),
     CONSTRAINT FK_Wishlist_Book FOREIGN KEY (book_id) REFERENCES book (id)
 );
-INSERT INTO profile(id)
-VALUES(0);
+
+/*Data Insertions*/
+
+/*Test users to be tested*/
+INSERT INTO profile
+(id, username, "password", first_name, last_name, street_address, street_address_2, city, state, zip_code)
+VALUES
+(12, '9hasui','Thedarkrock', 'Carlos', 'Shawn', '19808 Cade Park Dr ', NULL , 'Los Suenos', 'FL', 331908),
+(14, 'uajhsy','Lostinparadise', 'Mathew', 'James', '2178 Ola St', NULL, 'Pink Sky City', 'GA', 333890),
+(17, 'ausjjj','Thinkingthehardway', 'Daniel','Brown', '3589 West Holss St', NULL, 'Doortown', 'CA', 332897);
 
 INSERT INTO book (copies_sold, genre)
 VALUES (15, 'fantasy');
