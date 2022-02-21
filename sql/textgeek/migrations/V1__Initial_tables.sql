@@ -95,12 +95,27 @@ CREATE TABLE wishlist_books
 /*Data Insertions*/
 
 /*Test users to be tested*/
+
 INSERT INTO profile
 (id, username, "password", first_name, last_name, street_address, street_address_2, city, state, zip_code)
 VALUES
-(12, '9hasui','Thedarkrock', 'Carlos', 'Shawn', '19808 Cade Park Dr ', NULL , 'Los Suenos', 'FL', 331908),
-(14, 'uajhsy','Lostinparadise', 'Mathew', 'James', '2178 Ola St', NULL, 'Pink Sky City', 'GA', 333890),
-(17, 'ausjjj','Thinkingthehardway', 'Daniel','Brown', '3589 West Holss St', NULL, 'Doortown', 'CA', 332897);
+(12, '9hasui','ThedarkRock', 'Carlos', 'Shawn', '19808 Cade Park Dr ', NULL , 'Los Suenos', 'FL', 331908),
+(14, 'uajhsy','losTinparadise', 'Mathew', 'James', '2178 Ola St', NULL, 'Pink Sky City', 'GA', 333890),
+(17, 'ausjjj','thinkinGthehardway', 'Daniel','Brown', '3589 West Holss St', NULL, 'Doortown', 'CA', 332897);
+
+INSERT INTO credit_card
+(id, number, expiration_date, cvv)
+VALUES
+    (111, 5675879862768277, '05/31/2027', 453),
+    (112, 5928703827890923, '04/29/2023', 903),
+    (113, 4812120923228329, '02/06/2021', 127);
+
+INSERT INTO profile_credit_card
+(credit_card_id, profile_id)
+VALUES
+    (101,201),
+    (102,202),
+    (103,203);
 
 INSERT INTO book (copies_sold, genre)
 VALUES (15, 'fantasy');
