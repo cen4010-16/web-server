@@ -24,8 +24,8 @@ CREATE TABLE credit_card
 
 CREATE TABLE profile_credit_card
 (
-    credit_card_id integer NOT NULL,
-    profile_id integer NOT NULL,
+    credit_card_id BIGSERIAL  NOT NULL,
+    profile_id BIGSERIAL NOT NULL,
     CONSTRAINT profile_profile_credit_card FOREIGN KEY (profile_id) REFERENCES profile (id),
     CONSTRAINT credit_card_profile_credit_card FOREIGN KEY (credit_card_id) REFERENCES credit_card (id)
 );
@@ -48,8 +48,8 @@ CREATE TABLE profile
 );
 CREATE TABLE book_rating
 (
-    book_id integer NOT NULL,
-    profile_id integer NOT NULL,
+    book_id BIGSERIAL NOT NULL,
+    profile_id BIGSERIAL NOT NULL,
     rating integer,
     CONSTRAINT FK_Book_Rating FOREIGN KEY (book_id) REFERENCES book (id),
     CONSTRAINT FK_Profile_Rating FOREIGN KEY (profile_id) REFERENCES profile (id)
@@ -57,8 +57,8 @@ CREATE TABLE book_rating
 CREATE TABLE book_comment
 (
     id BIGSERIAL PRIMARY KEY NOT NULL,
-    profile_id integer NOT NULL,
-    book_id integer NOT NULL,
+    profile_id BIGSERIAL NOT NULL,
+    book_id BIGSERIAL NOT NULL,
     date date NOT NULL,
     description varchar(300) NOT NULL,
     CONSTRAINT FK_Profile_Comment FOREIGN KEY (profile_id) REFERENCES profile (id)
@@ -67,27 +67,27 @@ CREATE TABLE book_comment
 CREATE TABLE shopping_cart
 (
     id BIGSERIAL PRIMARY KEY NOT NULL,
-    profile_id integer NOT NULL,
+    profile_id BIGSERIAL NOT NULL,
     CONSTRAINT profile_shopping_cart FOREIGN KEY (profile_id) REFERENCES profile (id)
 );
 CREATE TABLE shopping_cart_books
 (
-    shopping_cart_id integer NOT NULL,
-    book_id integer NOT NULL,
+    shopping_cart_id BIGSERIAL NOT NULL,
+    book_id BIGSERIAL NOT NULL,
     CONSTRAINT FK_Shopping_Cart FOREIGN KEY (shopping_cart_id) REFERENCES shopping_cart (id),
     CONSTRAINT FK_Shopping_Cart_Book FOREIGN KEY (book_id) REFERENCES book (id)
 );
 CREATE TABLE wishlist
 (
     id BIGSERIAL PRIMARY KEY NOT NULL,
-    name    varchar(30) UNIQUE NOT NULL,
-    profile_id integer NOT NULL,
+    profile_id BIGSERIAL NOT NULL,
+    name varchar(30) UNIQUE NOT NULL,
     CONSTRAINT profile_wish_list FOREIGN KEY (profile_id) REFERENCES profile (id)
 );
 CREATE TABLE wishlist_books
 (
-    wishlist_id integer NOT NULL,
-    book_id     integer NOT NULL,
+    wishlist_id BIGSERIAL NOT NULL,
+    book_id     BIGSERIAL NOT NULL,
     CONSTRAINT FK_Wishlist FOREIGN KEY (wishlist_id) REFERENCES wishlist (id),
     CONSTRAINT FK_Wishlist_Book FOREIGN KEY (book_id) REFERENCES book (id)
 );
