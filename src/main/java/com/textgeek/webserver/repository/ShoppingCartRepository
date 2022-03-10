@@ -1,0 +1,8 @@
+package com.textgeek.webserver.repository; 
+
+import com.textgeek.webserver.model.ShoppingCart
+import org.springframework.data.jpa.repository.JpaRepository;
+
+public interface ShoppingCartRepository extends JpaRespository<ShoppingCart, Long>{
+
+}
