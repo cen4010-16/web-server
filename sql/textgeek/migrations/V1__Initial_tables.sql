@@ -44,11 +44,10 @@ CREATE TABLE book
 
 CREATE TABLE book_rating
 (
-    book_id BIGSERIAL NOT NULL,
-    profile_id BIGSERIAL NOT NULL,
-    rating integer,
-    CONSTRAINT FK_Book_Rating FOREIGN KEY (book_id) REFERENCES book (id),
-    CONSTRAINT FK_Profile_Rating FOREIGN KEY (profile_id) REFERENCES profile (id)
+    id BIGSERIAL PRIMARY KEY NOT NULL,
+    book_id BIGSERIAL NOT NULL REFERENCES book (id),
+    profile_id BIGSERIAL NOT NULL REFERENCES profile (id),
+    rating integer
 );
 CREATE TABLE book_comment
 (
@@ -161,6 +160,15 @@ INSERT INTO book (copies_sold, genre)
 VALUES (43, 'fantasy');
 INSERT INTO book (copies_sold, genre)
 VALUES (75, 'romance');
+
+INSERT INTO book_rating (id, book_id, profile_id, rating)
+VALUES (1, 1, 201, 5);
+INSERT INTO book_rating (id, book_id, profile_id, rating)
+VALUES (2, 1, 202, 4);
+INSERT INTO book_rating (id, book_id, profile_id, rating)
+VALUES (3, 1, 203, 3);
+
+
 INSERT INTO wishlist(id, name, profile_id)
 VALUES(0,'test 1' ,201);
 INSERT INTO wishlist_books(wishlist_id,book_id)
