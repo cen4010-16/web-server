@@ -11,11 +11,12 @@ import org.springframework.web.bind.annotation.RestController;
 @RestController
 @RequestMapping("/api/v1")
 public class ProfileController {
+
     @Autowired
     private ProfileRepository profileRepository;
 
     @PostMapping("/profiles")
-    public Profile addProfile(@RequestBody Profile profile){
+    public Profile addProfile(@RequestBody Profile profile) {
         System.out.println(profile);
         return profileRepository.save(profile);
     }
