@@ -15,9 +15,11 @@ CREATE TABLE profile
 );
 CREATE TABLE book_rating
 (
+    id BIGSERIAL PRIMARY KEY NOT NULL,
     book_id    BIGSERIAL NOT NULL,
     profile_id BIGSERIAL NOT NULL,
-    rating     INTEGER,
+    rating     INTEGER CHECK (rating > 0 AND rating <= 5),
+    created    TIMESTAMP WITHOUT TIME ZONE DEFAULT now()
     CONSTRAINT FK_Book_Rating FOREIGN KEY (book_id) REFERENCES book (id),
     CONSTRAINT FK_Profile_Rating FOREIGN KEY (profile_id) REFERENCES profile (id)
 );
