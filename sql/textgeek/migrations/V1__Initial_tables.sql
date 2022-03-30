@@ -95,12 +95,12 @@ CREATE TABLE wishlist_books
 INSERT INTO profile
 (id, username, password, first_name, last_name, street_address, street_address_2, city, state,
  zip_code)
-VALUES (201, '9hasui', 'ThedarkRock', 'Carlos', 'Shawn', '19808 Cade Park Dr ', NULL, 'Los Suenos',
-        'FL', 331908),
-       (202, 'uajhsy', 'losTinparadise', 'Mathew', 'James', '2178 Ola St', NULL, 'Pink Sky City',
-        'GA', 333890),
-       (203, 'ausjjj', 'thinkinGthehardway', 'Daniel', 'Brown', '3589 West Holss St', NULL,
-        'Doortown', 'CA', 332897);
+VALUES (201, '9hasui@gmail.com', 'ThedarkRock', 'Carlos', 'Shawn', '19808 Cade Park Dr ', NULL,
+        'Los Suenos', 'FL', 331908),
+       (202, 'uajhsy@yahoo.com', 'losTinparadise', 'Mathew', 'James', '2178 Ola St', NULL,
+        'Pink Sky City', 'GA', 333890),
+       (203, 'ausjje@yahoo.com', 'thinkinGthehardway', 'Daniel', 'Brown', '3589 West Holss St',
+        NULL,  'Doortown', 'CA', 332897);
 
 INSERT INTO credit_card
     (id, number, expiration_date, cvv)
