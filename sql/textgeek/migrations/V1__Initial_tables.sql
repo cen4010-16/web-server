@@ -38,7 +38,10 @@ CREATE TABLE user_credit_card
 );
 CREATE TABLE shopping_cart
 (
-    id BIGSERIAL PRIMARY KEY NOT NULL
+    quantity int,
+    id BIGSERIAL PRIMARY KEY NOT NULL,
+    profile_id BIGSERIAL UNIQUE NOT NULL REFERENCES profile(id)
+
 );
 CREATE TABLE shopping_cart_books
 (
@@ -115,3 +118,4 @@ INSERT INTO wishlist(id, name, profile_id)
 VALUES(0,'test 1' ,0);
 INSERT INTO wishlist_books(wishlist_id,book_id)
 VALUES(0,1);
+INSERT INTO shopping_cart VALUES(1,0);

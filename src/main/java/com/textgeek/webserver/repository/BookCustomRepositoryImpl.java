@@ -15,7 +15,7 @@ public class BookCustomRepositoryImpl implements BookCustomRepository {
     private EntityManager entityManager;
 
     @Override
-    public List<Book> findAllWithParams(Map<String, String> allParams) {
+    public  List<Book> findAllWithParams(Map<String, String> allParams) {
         CriteriaBuilder qb = entityManager.getCriteriaBuilder();
         CriteriaQuery query = qb.createQuery();
         Root<Book> root = query.from(Book.class);
