@@ -1,38 +1,20 @@
 package com.textgeek.webserver.service;
 
 
-import com.fasterxml.jackson.annotation.JacksonInject.Value;
-import com.textgeek.webserver.model.Book;
 import com.textgeek.webserver.model.Profile;
-import com.textgeek.webserver.model.ShoppingCart;
-import com.textgeek.webserver.repository.BookCustomRepository;
-import com.textgeek.webserver.repository.BookCustomRepositoryImpl;
-import com.textgeek.webserver.repository.BookRepository;
-import com.textgeek.webserver.repository.ShoppingCartRepository;
-import org.apache.tomcat.util.net.openssl.ciphers.Authentication;
-import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.data.relational.core.sql.In;
 import org.springframework.stereotype.Service;
-import org.springframework.web.bind.annotation.DeleteMapping;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.PutMapping;
-import java.util.List;
-import java.util.HashMap;
-import java.util.Map;
 
 @Service
 public class ShoppingCartService {
-
-    @Autowired
-    private static ShoppingCartRepository shoppingCartRepository;
+    //@Autowired
+    //private static ShoppingCartRepository shoppingCartRepository;
 
     //@Autowired
     //private static BookCustomRepositoryImpl bookCustomRepositoryipml;
 
-    public List<ShoppingCart> listShoppingCart (Profile profile){
+    /*public List<ShoppingCart> listShoppingCart (Profile profile){
         return shoppingCartRepository.findByProfile(profile);
-    }
+    }/*
 
 
     /*public static Integer addBook(Integer book_id, Integer quantity, Profile profile){

@@ -9,7 +9,6 @@ import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.JoinTable;
 import javax.persistence.ManyToMany;
-import javax.persistence.ManyToOne;
 import javax.persistence.OneToOne;
 import javax.persistence.Table;
 
@@ -33,15 +32,15 @@ public class ShoppingCart {
         name = "profile_id",
         referencedColumnName = "id"
     )
+
     private Profile profile;
+
     @ManyToMany
     @JoinTable(
-        name = "shopping_cart_books",
+        name = "shopping_cart_id",
         inverseJoinColumns = @JoinColumn(name = "book_id"))
 
     private List<Book> book;
-
-    private int quantity;
 
     public long getId() {
         return id;
@@ -67,12 +66,5 @@ public class ShoppingCart {
         this.book = book;
     }
 
-    public int getQuantity() {
-        return quantity;
-    }
-
-    public void setQuantity(int quantity) {
-        this.quantity = quantity;
-    }
 
 }

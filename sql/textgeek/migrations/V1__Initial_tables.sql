@@ -38,7 +38,6 @@ CREATE TABLE user_credit_card
 );
 CREATE TABLE shopping_cart
 (
-    quantity int,
     id BIGSERIAL PRIMARY KEY NOT NULL,
     profile_id BIGSERIAL UNIQUE NOT NULL REFERENCES profile(id)
 
@@ -63,7 +62,7 @@ CREATE TABLE wishlist_books
     CONSTRAINT FK_Wishlist FOREIGN KEY (wishlist_id) REFERENCES wishlist (id),
     CONSTRAINT FK_Wishlist_Book FOREIGN KEY (book_id) REFERENCES book (id)
 );
-INSERT INTO profile(id)
+INSERT INTO profile(id,)
 VALUES(0);
 
 INSERT INTO book (copies_sold, genre)
@@ -118,4 +117,7 @@ INSERT INTO wishlist(id, name, profile_id)
 VALUES(0,'test 1' ,0);
 INSERT INTO wishlist_books(wishlist_id,book_id)
 VALUES(0,1);
-INSERT INTO shopping_cart VALUES(1,0);
+INSERT INTO shopping_cart(id, profile_id)
+VALUES (0,0;
+INSERT INTO shopping_cart_books(shopping_cart_id, book_id)
+VALUES(0,1);

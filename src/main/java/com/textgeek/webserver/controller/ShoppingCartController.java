@@ -1,40 +1,48 @@
 package com.textgeek.webserver.controller;
 
-
-import com.textgeek.webserver.model.Profile;
+import com.textgeek.webserver.dto.ShoppingCartDTO;
 import com.textgeek.webserver.model.ShoppingCart;
-import com.textgeek.webserver.repository.ProfileRepository;
-import com.textgeek.webserver.service.ShoppingCartService;
-import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.boot.autoconfigure.neo4j.Neo4jProperties;
-import org.springframework.stereotype.Controller;
-import org.springframework.ui.Model;
+import com.textgeek.webserver.repository.BookRepository;
+import com.textgeek.webserver.repository.ShoppingCartRepository;
 import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestBody;
+import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 import java.util.List;
 
-@Controller
-//@RestController
+@RestController
+@RequestMapping("/api/v1/")
 public class ShoppingCartController {
+   private final ShoppingCartRepository shoppingCartRepository;
 
-    @Autowired
-    private ShoppingCartService shoppingCartService;
+    private final BookRepository bookRepository;
 
-    @Autowired
-    private ProfileRepository profileRepository;
+    public ShoppingCartController(
+        ShoppingCartRepository shoppingCartRepository, BookRepository bookRepository) {
+        this.shoppingCartRepository = shoppingCartRepository;
+        this.bookRepository = bookRepository;
+    }
 
-    @GetMapping("/shoppingcart/{userid}")
-    public List<ShoppingCart> SeeShoppingCart(Model model,@PathVariable("userid") long user_id /*,@AuthenticationPrincipal Authentication authentication*/){
+    @PostMapping("addshoppingcart")
+    public void addShoppingCart(@RequestBody ShoppingCartDTO shoppingCartDTO){
+    var book = bookRepository.findById(shoppingCartDTO.getBook_id()).orElseThrow();
+    var shopping_cart = shoppingCartRepository.findById(shoppingCartDTO.getShopping_cart_id()).orElseThrow();
+    shopping_cart.getBook().add(book);
+    shoppingCartRepository.save(shopping_cart);
+    }
 
-        Profile profile =
-            profileRepository.getById(user_id);
-        List<ShoppingCart> listShoppingCart = shoppingCartService.listShoppingCart(profile);
+    @GetMapping("shopping_cart")
+    public List<ShoppingCart> getShoppingCart() {
+        return shoppingCartRepository.findAll();
+    }
 
-        model.addAttribute("listShoppingCart",listShoppingCart);
-
-        return listShoppingCart;
-
+    @PostMapping("removebookshoppingcart")
+    public void removeBookShoppingCart(@RequestBody ShoppingCartDTO shoppingCartDTO){
+        var book = bookRepository.findById(shoppingCartDTO.getBook_id()).orElseThrow();
+        var shopping_cart = shoppingCartRepository.findById(shoppingCartDTO.getShopping_cart_id()).orElseThrow();
+        shopping_cart.getBook().remove(book);
+        shoppingCartRepository.save(shopping_cart);
     }
 
 }
