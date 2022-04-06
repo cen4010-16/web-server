@@ -16,7 +16,7 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 import java.util.List;
-import java.util.Optional;
+import com.textgeek.webserver.helper.CustomError;
 
 @RestController
 @RequestMapping("/api/v1/")
@@ -34,12 +34,13 @@ public class ShoppingCartController {
         this.profileRepository = profileRepository;
     }
 
+
     @GetMapping("shoppingcart/{shopping_cart_id}")
     public ResponseEntity BooksOnShoppingCart(@PathVariable Long shopping_cart_id)
     {
         var shoppingCart = shoppingCartRepository.findById(shopping_cart_id);
         if(shoppingCart.isEmpty()){
-            return new ResponseEntity<>(HttpStatus.NOT_FOUND);
+            return new ResponseEntity<>(new CustomError("Shopping Cart with ID: " + shopping_cart_id + " Not Found"), HttpStatus.NOT_FOUND);
     }
         return ResponseEntity.ok(shoppingCart);
     }
@@ -51,7 +52,7 @@ public class ShoppingCartController {
         ShoppingCart s1 = shoppingCartRepository.findByProfile(profile);
         if(s1!=null){
             System.out.println("profile already has a shopping cart");
-            return new ResponseEntity<>(HttpStatus.BAD_REQUEST);
+            return new ResponseEntity<>(new CustomError("The user "+ user_id +" already owns a shopping cart. Please add another user to the shopping cart"), HttpStatus.BAD_REQUEST);
         }else {
             shoppingCart.setProfile(profile);
             ShoppingCart shoppingCart1 = shoppingCartRepository.save(shoppingCart);
@@ -73,10 +74,6 @@ public class ShoppingCartController {
     public List<ShoppingCart> getShoppingCart() {
         return shoppingCartRepository.findAll();
     }
-
-
-
-
 
     @DeleteMapping("removebookshoppingcart")
     public void removeBookShoppingCart(@RequestBody ShoppingCartDTO shoppingCartDTO){
