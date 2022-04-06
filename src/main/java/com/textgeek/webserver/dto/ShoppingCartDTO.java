@@ -6,7 +6,7 @@ public class ShoppingCartDTO {
 
 @JsonProperty("book_id")
     private final long book_id;
-@JsonProperty("shopping_cart_id")
+@JsonProperty("id")
     private final long shopping_cart_id;
 
     public ShoppingCartDTO(long book_id, long shopping_cart_id){
@@ -21,4 +21,5 @@ public class ShoppingCartDTO {
     public long getShopping_cart_id() {
         return shopping_cart_id;
     }
+
 }

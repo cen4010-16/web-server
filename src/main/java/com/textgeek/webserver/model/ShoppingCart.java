@@ -37,7 +37,8 @@ public class ShoppingCart {
 
     @ManyToMany
     @JoinTable(
-        name = "shopping_cart_id",
+        name = "shopping_cart_books",
+        joinColumns = @JoinColumn(name = "shopping_cart_id"),
         inverseJoinColumns = @JoinColumn(name = "book_id"))
 
     private List<Book> book;
