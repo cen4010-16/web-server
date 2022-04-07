@@ -1,3 +1,4 @@
+
 /*Tables Creation*/
 
 CREATE TABLE profile
@@ -23,6 +24,7 @@ CREATE TABLE credit_card
     username        varchar(24)           NOT NULL
 );
 
+
 CREATE TABLE author
 (
     id BIGSERIAL PRIMARY KEY NOT NULL
@@ -42,6 +44,7 @@ CREATE TABLE book_rating
     profile_id BIGSERIAL NOT NULL REFERENCES profile (id),
     rating integer
 );
+
 CREATE TABLE book_comment
 (
     id          BIGSERIAL PRIMARY KEY NOT NULL,
@@ -58,6 +61,7 @@ CREATE TABLE shopping_cart
     profile_id BIGSERIAL             NOT NULL,
     CONSTRAINT profile_shopping_cart FOREIGN KEY (profile_id) REFERENCES profile (id)
 );
+
 CREATE TABLE shopping_cart_books
 (
     shopping_cart_id BIGSERIAL NOT NULL,
@@ -65,6 +69,7 @@ CREATE TABLE shopping_cart_books
     CONSTRAINT FK_Shopping_Cart FOREIGN KEY (shopping_cart_id) REFERENCES shopping_cart (id),
     CONSTRAINT FK_Shopping_Cart_Book FOREIGN KEY (book_id) REFERENCES book (id)
 );
+
 CREATE TABLE wishlist
 (
     id         BIGSERIAL PRIMARY KEY NOT NULL,
@@ -72,6 +77,7 @@ CREATE TABLE wishlist
     name       varchar(30) UNIQUE    NOT NULL,
     CONSTRAINT profile_wish_list FOREIGN KEY (profile_id) REFERENCES profile (id)
 );
+
 CREATE TABLE wishlist_books
 (
     wishlist_id BIGSERIAL NOT NULL,
@@ -98,7 +104,6 @@ INSERT INTO credit_card
     (id, number, expiration_date, cvv, username)
 VALUES (101, '8798567562768277', '05/31/2027', '453', '9hasui@gmail.com'),
        (103, '4812120923228329', '02/06/2021', '127', 'uajhsy@yahoo.com');
-
 
 INSERT INTO book (copies_sold, genre)
 VALUES (15, 'fantasy');
@@ -161,3 +166,7 @@ INSERT INTO wishlist(id, name, profile_id)
 VALUES (0, 'test 1', 201);
 INSERT INTO wishlist_books(wishlist_id, book_id)
 VALUES (0, 1);
+INSERT INTO shopping_cart(id, profile_id)
+VALUES (0,201);
+INSERT INTO shopping_cart_books(shopping_cart_id, book_id)
+VALUES(0,1);
