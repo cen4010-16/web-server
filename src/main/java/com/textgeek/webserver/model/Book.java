@@ -1,5 +1,6 @@
 package com.textgeek.webserver.model;
 
+import org.hibernate.annotations.Formula;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
@@ -24,6 +25,9 @@ public class Book {
     @Column(name = "copies_sold")
     private int copiesSold;
 
+    @Formula("(select avg(br.rating) from book_rating br where br.book_id = id)")
+    private Integer averageRating;
+
     public long getId() {
         return id;
     }
@@ -46,6 +50,13 @@ public class Book {
 
     public void setCopiesSold(int copiesSold) {
         this.copiesSold = copiesSold;
+    }
+
+    public Integer getAverageRating(){
+        return averageRating;
+    }
+    public void setAverageRating(Integer averageRating){
+        this.averageRating = averageRating;
     }
 
 }
