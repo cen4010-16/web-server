@@ -1,11 +1,18 @@
 package com.textgeek.webserver.model;
 
-import javax.persistence.*;
-import java.util.Date;
+import javax.persistence.Column;
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
+import javax.persistence.Table;
 
 @Entity
 @Table(name = "book_rating")
 public class BookRating {
+
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "id", nullable = false)
@@ -17,7 +24,6 @@ public class BookRating {
         referencedColumnName = "id"
     )
     private Book book;
-
     @ManyToOne
     @JoinColumn(
         name = "profile_id",
@@ -27,10 +33,6 @@ public class BookRating {
 
     @Column(name = "rating")
     private int rating;
-
-    @Column(name = "created", nullable = false)
-    @Temporal(TemporalType.TIMESTAMP)
-    public Date created;
 
     public Long getId() {
         return id;
@@ -60,26 +62,7 @@ public class BookRating {
         return rating;
     }
 
-    public void setRating(int rating) {
+    public void setRating(final String text) {
         this.rating = rating;
-    }
-    public Date getCreated() {
-        return created;
-    }
-
-    public void setCreated(final Date created) {
-        this.created = created;
-    }
-
-
-    @Override
-    public String toString() {
-        return "BookRating{" +
-            "id=" + id +
-            ", book=" + book +
-            ", profile=" + profile +
-            ", rating='" + rating + '\'' +
-            ", created=" + created +
-            '}';
     }
 }
