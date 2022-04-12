@@ -42,14 +42,15 @@ CREATE TABLE book
 
 CREATE TABLE book_rating
 (
-    id BIGSERIAL PRIMARY KEY NOT NULL,
-    book_id    BIGSERIAL NOT NULL,
-    profile_id BIGSERIAL NOT NULL,
+    id         BIGSERIAL PRIMARY KEY NOT NULL,
+    book_id    BIGSERIAL             NOT NULL,
+    profile_id BIGSERIAL             NOT NULL,
     rating     INTEGER CHECK (rating > 0 AND rating <= 5),
-    created    TIMESTAMP WITHOUT TIME ZONE DEFAULT now()
-        CONSTRAINT FK_Book_Rating FOREIGN KEY (book_id) REFERENCES book (id),
+    created    TIMESTAMP WITHOUT TIME ZONE DEFAULT now(),
+    CONSTRAINT FK_Book_Rating FOREIGN KEY (book_id) REFERENCES book (id),
     CONSTRAINT FK_Profile_Rating FOREIGN KEY (profile_id) REFERENCES profile (id)
 );
+
 
 CREATE TABLE book_comment
 (
@@ -239,9 +240,9 @@ VALUES (0, 'test 1', 201);
 INSERT INTO wishlist_books(wishlist_id, book_id)
 VALUES (0, 1);
 INSERT INTO shopping_cart(id, profile_id)
-VALUES (0,201);
+VALUES (0, 201);
 INSERT INTO shopping_cart_books(shopping_cart_id, book_id)
-VALUES(0,1);
+VALUES (0, 1);
 
 INSERT INTO book_comment(book_id, profile_id, text)
-VALUES (1, 0, 'Great book!')
+VALUES (1, 201, 'Great book!');
