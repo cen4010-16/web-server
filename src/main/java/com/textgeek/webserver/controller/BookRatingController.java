@@ -1,15 +1,21 @@
 package com.textgeek.webserver.controller;
 
 import com.textgeek.webserver.dto.BookRatingDto;
+import com.textgeek.webserver.model.Book;
 import com.textgeek.webserver.model.BookRating;
 import com.textgeek.webserver.repository.BookRatingRepository;
 import com.textgeek.webserver.repository.BookRepository;
 import com.textgeek.webserver.repository.ProfileRepository;
-import org.springframework.web.bind.annotation.*;
-
 import java.sql.Date;
 import java.time.Instant;
 import java.util.List;
+import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestBody;
+import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.ResponseBody;
+import org.springframework.web.bind.annotation.RestController;
 
 @RestController
 @RequestMapping("/api/v1/books")
@@ -35,8 +41,8 @@ public class BookRatingController {
 
     @GetMapping("ratings/average")
     @ResponseBody
-    public double getBookRatings(@RequestParam long id) {
-        return ratingRepository.findAverageRating(id);
+    public Book getBookRatings(@RequestParam long id) {
+        return bookRepository.findById(id).orElseThrow();
     }
 
     @PostMapping("ratings")

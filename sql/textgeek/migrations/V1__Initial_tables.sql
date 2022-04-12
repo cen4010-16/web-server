@@ -151,87 +151,91 @@ VALUES (246, 'fantasy', 'Ephraim Sevela/Antonina W. Bouis', 'We Were Not Like Ot
 INSERT INTO book (copies_sold, genre, author, title, cover_url)
 VALUES (163, 'romance', 'Alice Sebold', 'The Lovely Bones', 'https://www.image.com/sdfs4323');
 INSERT INTO book (copies_sold, genre, author, title, cover_url)
-VALUES (78, 'fantasy', 'Kevin O''Malley/Carol Heyer/Scott Goto', 'Once Upon a Cool Motorcycle Dude', 'https://www.image.com/sdfsdf435');
+VALUES (78, 'fantasy', 'Kevin O''Malley/Carol Heyer/Scott Goto', 'Once Upon a Cool Motorcycle Dude',
+        'https://www.image.com/sdfsdf435');
 INSERT INTO book (copies_sold, genre, author, title, cover_url)
-VALUES (95, 'romance', 'Ayn Rand/Leonard Peikoff', 'We the Living', 'https://www.image.com/dsfs4355');
+VALUES (95, 'romance', 'Ayn Rand/Leonard Peikoff', 'We the Living',
+        'https://www.image.com/dsfs4355');
 INSERT INTO book (copies_sold, genre, author, title, cover_url)
-VALUES (43, 'fantasy', 'Lonely Planet/Sarah Johnstone/Tom Masters', 'Lonely Planet Londres', 'https://www.image.com/324dsfgd');
+VALUES (43, 'fantasy', 'Lonely Planet/Sarah Johnstone/Tom Masters', 'Lonely Planet Londres',
+        'https://www.image.com/324dsfgd');
 INSERT INTO book (copies_sold, genre, author, title, cover_url)
-VALUES (75, 'romance', 'George S. Clason', 'The Richest Man in Babylon', 'https://www.image.com/22343sad4');
+VALUES (75, 'romance', 'George S. Clason', 'The Richest Man in Babylon',
+        'https://www.image.com/22343sad4');
 
-INSERT INTO book_rating (id, book_id, profile_id, rating)
-VALUES (1, 1, 201, 5);
-INSERT INTO book_rating (id, book_id, profile_id, rating)
-VALUES (2, 2, 201, 4);
-INSERT INTO book_rating (id, book_id, profile_id, rating)
-VALUES (3, 3, 201, 1);
-INSERT INTO book_rating (id, book_id, profile_id, rating)
-VALUES (4, 4, 201, 3);
-INSERT INTO book_rating (id, book_id, profile_id, rating)
-VALUES (5, 5, 201, 2);
-INSERT INTO book_rating (id, book_id, profile_id, rating)
-VALUES (6, 6, 201, 5);
-INSERT INTO book_rating (id, book_id, profile_id, rating)
-VALUES (7, 7, 201, 3);
-INSERT INTO book_rating (id, book_id, profile_id, rating)
-VALUES (8, 8, 201, 2);
-INSERT INTO book_rating (id, book_id, profile_id, rating)
-VALUES (9, 9, 201, 4);
-INSERT INTO book_rating (id, book_id, profile_id, rating)
-VALUES (10, 10, 201, 5);
-INSERT INTO book_rating (id, book_id, profile_id, rating)
-VALUES (11, 11, 201, 2);
-INSERT INTO book_rating (id, book_id, profile_id, rating)
-VALUES (12, 12, 201, 1);
-INSERT INTO book_rating (id, book_id, profile_id, rating)
-VALUES (13, 13, 201, 4);
-INSERT INTO book_rating (id, book_id, profile_id, rating)
-VALUES (14, 14, 201, 3);
-INSERT INTO book_rating (id, book_id, profile_id, rating)
-VALUES (15, 15, 201, 4);
-INSERT INTO book_rating (id, book_id, profile_id, rating)
-VALUES (16, 16, 201, 5);
-INSERT INTO book_rating (id, book_id, profile_id, rating)
-VALUES (17, 17, 201, 1);
-INSERT INTO book_rating (id, book_id, profile_id, rating)
-VALUES (18, 18, 201, 1);
+INSERT INTO book_rating (book_id, profile_id, rating)
+VALUES (1, 201, 5);
+INSERT INTO book_rating (book_id, profile_id, rating)
+VALUES (2, 201, 4);
+INSERT INTO book_rating (book_id, profile_id, rating)
+VALUES (3, 201, 1);
+INSERT INTO book_rating (book_id, profile_id, rating)
+VALUES (4, 201, 3);
+INSERT INTO book_rating (book_id, profile_id, rating)
+VALUES (5, 201, 2);
+INSERT INTO book_rating (book_id, profile_id, rating)
+VALUES (6, 201, 5);
+INSERT INTO book_rating (book_id, profile_id, rating)
+VALUES (7, 201, 3);
+INSERT INTO book_rating (book_id, profile_id, rating)
+VALUES (8, 201, 2);
+INSERT INTO book_rating (book_id, profile_id, rating)
+VALUES (9, 201, 4);
+INSERT INTO book_rating (book_id, profile_id, rating)
+VALUES (10, 201, 5);
+INSERT INTO book_rating (book_id, profile_id, rating)
+VALUES (11, 201, 2);
+INSERT INTO book_rating (book_id, profile_id, rating)
+VALUES (12, 201, 1);
+INSERT INTO book_rating (book_id, profile_id, rating)
+VALUES (13, 201, 4);
+INSERT INTO book_rating (book_id, profile_id, rating)
+VALUES (14, 201, 3);
+INSERT INTO book_rating (book_id, profile_id, rating)
+VALUES (15, 201, 4);
+INSERT INTO book_rating (book_id, profile_id, rating)
+VALUES (16, 201, 5);
+INSERT INTO book_rating (book_id, profile_id, rating)
+VALUES (17, 201, 1);
+INSERT INTO book_rating (book_id, profile_id, rating)
+VALUES (18, 201, 1);
 
-INSERT INTO book_rating (id, book_id, profile_id, rating)
-VALUES (19, 1, 202, 4);
-INSERT INTO book_rating (id, book_id, profile_id, rating)
-VALUES (20, 2, 202, 5);
-INSERT INTO book_rating (id, book_id, profile_id, rating)
-VALUES (21, 3, 202, 3);
-INSERT INTO book_rating (id, book_id, profile_id, rating)
-VALUES (22, 4, 202, 2);
-INSERT INTO book_rating (id, book_id, profile_id, rating)
-VALUES (23, 5, 202, 5);
-INSERT INTO book_rating (id, book_id, profile_id, rating)
-VALUES (24, 6, 202, 4);
-INSERT INTO book_rating (id, book_id, profile_id, rating)
-VALUES (25, 7, 202, 3);
-INSERT INTO book_rating (id, book_id, profile_id, rating)
-VALUES (26, 8, 202, 2);
-INSERT INTO book_rating (id, book_id, profile_id, rating)
-VALUES (27, 9, 202, 5);
-INSERT INTO book_rating (id, book_id, profile_id, rating)
-VALUES (28, 10, 202, 4);
-INSERT INTO book_rating (id, book_id, profile_id, rating)
-VALUES (29, 11, 202, 4);
-INSERT INTO book_rating (id, book_id, profile_id, rating)
-VALUES (30, 12, 202, 2);
-INSERT INTO book_rating (id, book_id, profile_id, rating)
-VALUES (31, 13, 202, 1);
-INSERT INTO book_rating (id, book_id, profile_id, rating)
-VALUES (32, 14, 202, 1);
-INSERT INTO book_rating (id, book_id, profile_id, rating)
-VALUES (33, 15, 202, 2);
-INSERT INTO book_rating (id, book_id, profile_id, rating)
-VALUES (34, 16, 202, 3);
-INSERT INTO book_rating (id, book_id, profile_id, rating)
-VALUES (35, 17, 202, 4);
-INSERT INTO book_rating (id, book_id, profile_id, rating)
-VALUES (36, 18, 202, 2);
+INSERT INTO book_rating (book_id, profile_id, rating)
+VALUES (1, 202, 4);
+INSERT INTO book_rating (book_id, profile_id, rating)
+VALUES (2, 202, 5);
+INSERT INTO book_rating (book_id, profile_id, rating)
+VALUES (3, 202, 3);
+INSERT INTO book_rating (book_id, profile_id, rating)
+VALUES (4, 202, 2);
+INSERT INTO book_rating (book_id, profile_id, rating)
+VALUES (5, 202, 5);
+INSERT INTO book_rating (book_id, profile_id, rating)
+VALUES (6, 202, 4);
+INSERT INTO book_rating (book_id, profile_id, rating)
+VALUES (7, 202, 3);
+INSERT INTO book_rating (book_id, profile_id, rating)
+VALUES (8, 202, 2);
+INSERT INTO book_rating (book_id, profile_id, rating)
+VALUES (9, 202, 5);
+INSERT INTO book_rating (book_id, profile_id, rating)
+VALUES (10, 202, 4);
+INSERT INTO book_rating (book_id, profile_id, rating)
+VALUES (11, 202, 4);
+INSERT INTO book_rating (book_id, profile_id, rating)
+VALUES (12, 202, 2);
+INSERT INTO book_rating (book_id, profile_id, rating)
+VALUES (13, 202, 1);
+INSERT INTO book_rating (book_id, profile_id, rating)
+VALUES (14, 202, 1);
+INSERT INTO book_rating (book_id, profile_id, rating)
+VALUES (15, 202, 2);
+INSERT INTO book_rating (book_id, profile_id, rating)
+VALUES (16, 202, 3);
+INSERT INTO book_rating (book_id, profile_id, rating)
+VALUES (17, 202, 4);
+INSERT INTO book_rating (book_id, profile_id, rating)
+VALUES (18, 202, 2);
 
 
 INSERT INTO wishlist(id, name, profile_id)
@@ -241,7 +245,7 @@ VALUES (0, 1);
 INSERT INTO shopping_cart(id, profile_id)
 VALUES (0, 201);
 INSERT INTO shopping_cart_books(shopping_cart_id, book_id)
-VALUES(0,1);
+VALUES (0, 1);
 
 INSERT INTO wishlist(id, name, profile_id)
 VALUES (1, 'test 2', 202);
