@@ -13,14 +13,16 @@ import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
 
 @Entity
-@Table(name = "book_rating")
-public class BookRating {
+@Table(name = "book_comment")
+public class BookComment {
 
+    @Column(name = "created", nullable = false)
+    @Temporal(TemporalType.TIMESTAMP)
+    public Date created;
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "id", nullable = false)
     private Long id;
-
     @ManyToOne
     @JoinColumn(
         name = "book_id",
@@ -33,13 +35,8 @@ public class BookRating {
         referencedColumnName = "id"
     )
     private Profile profile;
-
-    @Column(name = "rating")
-    private int rating;
-
-    @Column(name = "created", nullable = false)
-    @Temporal(TemporalType.TIMESTAMP)
-    public Date created;
+    @Column(name = "text")
+    private String text;
 
     public Long getId() {
         return id;
@@ -65,12 +62,12 @@ public class BookRating {
         this.profile = profile;
     }
 
-    public int getRating() {
-        return rating;
+    public String getText() {
+        return text;
     }
 
-    public void setRating(int rating) {
-        this.rating = rating;
+    public void setText(final String text) {
+        this.text = text;
     }
 
     public Date getCreated() {
@@ -79,5 +76,17 @@ public class BookRating {
 
     public void setCreated(final Date created) {
         this.created = created;
+    }
+
+
+    @Override
+    public String toString() {
+        return "BookComment{" +
+            "id=" + id +
+            ", book=" + book +
+            ", profile=" + profile +
+            ", text='" + text + '\'' +
+            ", created=" + created +
+            '}';
     }
 }
