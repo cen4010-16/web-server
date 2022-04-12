@@ -34,7 +34,10 @@ CREATE TABLE book
 (
     id          BIGSERIAL PRIMARY KEY NOT NULL,
     copies_sold integer DEFAULT 0,
-    genre       varchar(30)
+    genre       varchar(30),
+    author       varchar(100),
+    title       varchar(100),
+    cover_url varchar(350)
 );
 
 CREATE TABLE book_rating
@@ -105,61 +108,128 @@ INSERT INTO credit_card
 VALUES (101, '8798567562768277', '05/31/2027', '453', '9hasui@gmail.com'),
        (103, '4812120923228329', '02/06/2021', '127', 'uajhsy@yahoo.com');
 
-INSERT INTO book (copies_sold, genre)
-VALUES (15, 'fantasy');
-INSERT INTO book (copies_sold, genre)
-VALUES (100, 'romance');
-INSERT INTO book (copies_sold, genre)
-VALUES (55, 'fantasy');
-INSERT INTO book (copies_sold, genre)
-VALUES (67, 'romance');
-INSERT INTO book (copies_sold, genre)
-VALUES (324, 'fantasy');
-INSERT INTO book (copies_sold, genre)
-VALUES (347, 'romance');
-INSERT INTO book (copies_sold, genre)
-VALUES (34, 'fantasy');
-INSERT INTO book (copies_sold, genre)
-VALUES (75, 'romance');
-INSERT INTO book (copies_sold, genre)
-VALUES (85, 'fantasy');
-INSERT INTO book (copies_sold, genre)
-VALUES (43, 'romance');
-INSERT INTO book (copies_sold, genre)
-VALUES (23, 'fantasy');
-INSERT INTO book (copies_sold, genre)
-VALUES (2, 'romance');
-INSERT INTO book (copies_sold, genre)
-VALUES (954, 'fantasy');
-INSERT INTO book (copies_sold, genre)
-VALUES (346, 'romance');
-INSERT INTO book (copies_sold, genre)
-VALUES (357, 'fantasy');
-INSERT INTO book (copies_sold, genre)
-VALUES (235, 'romance');
-INSERT INTO book (copies_sold, genre)
-VALUES (963, 'fantasy');
-INSERT INTO book (copies_sold, genre)
-VALUES (734, 'romance');
-INSERT INTO book (copies_sold, genre)
-VALUES (246, 'fantasy');
-INSERT INTO book (copies_sold, genre)
-VALUES (163, 'romance');
-INSERT INTO book (copies_sold, genre)
-VALUES (78, 'fantasy');
-INSERT INTO book (copies_sold, genre)
-VALUES (95, 'romance');
-INSERT INTO book (copies_sold, genre)
-VALUES (43, 'fantasy');
-INSERT INTO book (copies_sold, genre)
-VALUES (75, 'romance');
+INSERT INTO book (copies_sold, genre, author, title, cover_url)
+VALUES (15, 'fiction', 'J.K. Rowling/Mary GrandPré', 'Harry Potter and the Half-Blood Prince', 'https://www.image.com/213124');
+INSERT INTO book (copies_sold, genre, author, title, cover_url)
+VALUES (100, 'fiction', 'J.K. Rowling/Mary GrandPré', 'Harry Potter and the Order of the Phoenix','https://www.image.com/342523');
+INSERT INTO book (copies_sold, genre, author, title, cover_url)
+VALUES (55, 'fiction', 'J.K. Rowling', 'Harry Potter and the Chamber of Secrets', 'https://www.image.com/23124');
+INSERT INTO book (copies_sold, genre, author, title, cover_url)
+VALUES (67, 'fiction', 'J.K. Rowling/Mary GrandPré', 'Harry Potter and the Prisoner of Azkaban', 'https://www.image.com/66577');
+INSERT INTO book (copies_sold, genre, author, title, cover_url)
+VALUES (324, 'romance','Charles Willeford/Elmore Leonard', 'Miami Blues', 'https://www.image.com/86456');
+INSERT INTO book (copies_sold, genre, author, title, cover_url)
+VALUES (347, 'romance','Henry Miller', 'Nexus','https://www.image.com/546454');
+INSERT INTO book (copies_sold, genre, author, title, cover_url)
+VALUES (34, 'action', 'Marguerite Duras/Barbara Bray', 'The War', 'https://www.image.com/45367');
+INSERT INTO book (copies_sold, genre, author, title, cover_url)
+VALUES (75, 'romance', 'Kahlil Gibran/Suheil Bushrui/Salma H. Al-Kuzbari', 'Love Letters', 'https://www.image.com/57432');
+INSERT INTO book (copies_sold, genre, author, title, cover_url)
+VALUES (85, 'fantasy', 'Joan Didion/David Thomson', 'Play It As It Lays','https://www.image.com/125734');
+INSERT INTO book (copies_sold, genre, author, title, cover_url)
+VALUES (43, 'romance','Paul Auster/Art Spiegelman/Luc Sante', 'The New York Trilogy', 'https://www.image.com/734623');
+INSERT INTO book (copies_sold, genre, author, title, cover_url)
+VALUES (23, 'fantasy', 'Paul Auster', 'City of Glass', 'https://www.image.com/364523');
+INSERT INTO book (copies_sold, genre, author, title, cover_url)
+VALUES (2, 'romance', 'Peter Moon/Preston B. Nichols/Nina Helms', 'Pyramids of Montauk: Explorations in Consciousness','https://www.image.com/475334');
+INSERT INTO book (copies_sold, genre, author, title, cover_url)
+VALUES (954, 'fantasy', 'Stephen Leeb/Glen C. Strathy', 'The Coming Economic Collapse: How You Can Thrive When Oil Costs $200 a Barrel', 'https://www.image.com/324323');
+INSERT INTO book (copies_sold, genre, author, title, cover_url)
+VALUES (346, 'romance', 'Joseph A. Tainter', 'Collapse of Complex Societies', 'https://www.image.com/2352567');
+INSERT INTO book (copies_sold, genre, author, title, cover_url)
+VALUES (357, 'fantasy', 'Robert D. Putnam', 'Bowling Alone: The Collapse and Revival of American Community', 'https://www.image.com/32556');
+INSERT INTO book (copies_sold, genre, author, title, cover_url)
+VALUES (235, 'romance', 'Philip K. Howard', 'The Collapse of the Common Good: How America''s Lawsuit Culture Undermines Our Freedom', 'https://www.image.com/85687');
+INSERT INTO book (copies_sold, genre, author, title, cover_url)
+VALUES (963, 'fantasy', 'Nikola Tesla', 'My Inventions', 'https://www.image.com/4563643');
+INSERT INTO book (copies_sold, genre, author, title, cover_url)
+VALUES (734, 'romance', 'William Golding', 'Lord of the Flies', 'https://www.image.com/dsfgdsfs');
+INSERT INTO book (copies_sold, genre, author, title, cover_url)
+VALUES (246, 'fantasy', 'Ephraim Sevela/Antonina W. Bouis', 'We Were Not Like Other People', 'https://www.image.com/435gs');
+INSERT INTO book (copies_sold, genre, author, title, cover_url)
+VALUES (163, 'romance', 'Alice Sebold', 'The Lovely Bones', 'https://www.image.com/sdfs4323');
+INSERT INTO book (copies_sold, genre, author, title, cover_url)
+VALUES (78, 'fantasy', 'Kevin O''Malley/Carol Heyer/Scott Goto', 'Once Upon a Cool Motorcycle Dude', 'https://www.image.com/sdfsdf435');
+INSERT INTO book (copies_sold, genre, author, title, cover_url)
+VALUES (95, 'romance', 'Ayn Rand/Leonard Peikoff', 'We the Living', 'https://www.image.com/dsfs4355');
+INSERT INTO book (copies_sold, genre, author, title, cover_url)
+VALUES (43, 'fantasy', 'Lonely Planet/Sarah Johnstone/Tom Masters', 'Lonely Planet Londres', 'https://www.image.com/324dsfgd');
+INSERT INTO book (copies_sold, genre, author, title, cover_url)
+VALUES (75, 'romance', 'George S. Clason', 'The Richest Man in Babylon', 'https://www.image.com/22343sad4');
 
 INSERT INTO book_rating (id, book_id, profile_id, rating)
 VALUES (1, 1, 201, 5);
 INSERT INTO book_rating (id, book_id, profile_id, rating)
-VALUES (2, 1, 202, 4);
+VALUES (2, 2, 201, 4);
 INSERT INTO book_rating (id, book_id, profile_id, rating)
-VALUES (3, 1, 203, 3);
+VALUES (3, 3, 201, 1);
+INSERT INTO book_rating (id, book_id, profile_id, rating)
+VALUES (4, 4, 201, 3);
+INSERT INTO book_rating (id, book_id, profile_id, rating)
+VALUES (5, 5, 201, 2);
+INSERT INTO book_rating (id, book_id, profile_id, rating)
+VALUES (6, 6, 201, 5);
+INSERT INTO book_rating (id, book_id, profile_id, rating)
+VALUES (7, 7, 201, 3);
+INSERT INTO book_rating (id, book_id, profile_id, rating)
+VALUES (8, 8, 201, 2);
+INSERT INTO book_rating (id, book_id, profile_id, rating)
+VALUES (9, 9, 201, 4);
+INSERT INTO book_rating (id, book_id, profile_id, rating)
+VALUES (10, 10, 201, 5);
+INSERT INTO book_rating (id, book_id, profile_id, rating)
+VALUES (11, 11, 201, 2);
+INSERT INTO book_rating (id, book_id, profile_id, rating)
+VALUES (12, 12, 201, 1);
+INSERT INTO book_rating (id, book_id, profile_id, rating)
+VALUES (13, 13, 201, 4);
+INSERT INTO book_rating (id, book_id, profile_id, rating)
+VALUES (14, 14, 201, 3);
+INSERT INTO book_rating (id, book_id, profile_id, rating)
+VALUES (15, 15, 201, 4);
+INSERT INTO book_rating (id, book_id, profile_id, rating)
+VALUES (16, 16, 201, 5);
+INSERT INTO book_rating (id, book_id, profile_id, rating)
+VALUES (17, 17, 201, 1);
+INSERT INTO book_rating (id, book_id, profile_id, rating)
+VALUES (18, 18, 201, 1);
+
+INSERT INTO book_rating (id, book_id, profile_id, rating)
+VALUES (19, 1, 202, 4);
+INSERT INTO book_rating (id, book_id, profile_id, rating)
+VALUES (20, 2, 202, 5);
+INSERT INTO book_rating (id, book_id, profile_id, rating)
+VALUES (21, 3, 202, 3);
+INSERT INTO book_rating (id, book_id, profile_id, rating)
+VALUES (22, 4, 202, 2);
+INSERT INTO book_rating (id, book_id, profile_id, rating)
+VALUES (23, 5, 202, 5);
+INSERT INTO book_rating (id, book_id, profile_id, rating)
+VALUES (24, 6, 202, 4);
+INSERT INTO book_rating (id, book_id, profile_id, rating)
+VALUES (25, 7, 202, 3);
+INSERT INTO book_rating (id, book_id, profile_id, rating)
+VALUES (26, 8, 202, 2);
+INSERT INTO book_rating (id, book_id, profile_id, rating)
+VALUES (27, 9, 202, 5);
+INSERT INTO book_rating (id, book_id, profile_id, rating)
+VALUES (28, 10, 202, 4);
+INSERT INTO book_rating (id, book_id, profile_id, rating)
+VALUES (29, 11, 202, 4);
+INSERT INTO book_rating (id, book_id, profile_id, rating)
+VALUES (30, 12, 202, 2);
+INSERT INTO book_rating (id, book_id, profile_id, rating)
+VALUES (31, 13, 202, 1);
+INSERT INTO book_rating (id, book_id, profile_id, rating)
+VALUES (32, 14, 202, 1);
+INSERT INTO book_rating (id, book_id, profile_id, rating)
+VALUES (33, 15, 202, 2);
+INSERT INTO book_rating (id, book_id, profile_id, rating)
+VALUES (34, 16, 202, 3);
+INSERT INTO book_rating (id, book_id, profile_id, rating)
+VALUES (35, 17, 202, 4);
+INSERT INTO book_rating (id, book_id, profile_id, rating)
+VALUES (36, 18, 202, 2);
 
 
 INSERT INTO wishlist(id, name, profile_id)
