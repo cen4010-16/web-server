@@ -47,6 +47,16 @@ public class WishList {
         this.id = id;
     }
 
+    @Override
+    public String toString() {
+        return "WishList{" +
+            "id=" + id +
+            ", name='" + name + '\'' +
+            ", profile=" + profile +
+            ", book=" + book +
+            '}';
+    }
+
     public String getName() {
         return name;
     }

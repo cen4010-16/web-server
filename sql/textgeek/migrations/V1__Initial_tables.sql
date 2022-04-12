@@ -170,3 +170,7 @@ INSERT INTO shopping_cart(id, profile_id)
 VALUES (0,201);
 INSERT INTO shopping_cart_books(shopping_cart_id, book_id)
 VALUES(0,1);
+INSERT INTO wishlist(id, name, profile_id)
+VALUES (1, 'test 2', 202);
+INSERT INTO wishlist_books(wishlist_id, book_id)
+VALUES (1, 1);
