@@ -9,6 +9,8 @@ import com.textgeek.webserver.repository.ProfileRepository;
 import java.sql.Date;
 import java.time.Instant;
 import java.util.List;
+import org.springframework.data.domain.Sort;
+import org.springframework.data.domain.Sort.Direction;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
@@ -55,5 +57,11 @@ public class BookRatingController {
         rating.setRating(ratingDto.getRating());
         rating.setCreated(Date.from(Instant.now()));
         return ratingRepository.save(rating);
+    }
+
+    @GetMapping("ratings/sorted")
+    @ResponseBody
+    public List<BookRating> getSortedRatings() {
+        return ratingRepository.findAll(Sort.by(Direction.DESC, "rating"));
     }
 }

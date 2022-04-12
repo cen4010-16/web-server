@@ -53,11 +53,10 @@ CREATE TABLE book_rating
 
 CREATE TABLE book_comment
 (
-    id         BIGSERIAL PRIMARY KEY NOT NULL,
-    book_id    BIGSERIAL             NOT NULL REFERENCES book (id),
-    profile_id BIGSERIAL             NOT NULL REFERENCES profile (id),
-    text       VARCHAR(280)          NOT NULL,
-    created    TIMESTAMP WITHOUT TIME ZONE DEFAULT now()
+    id        BIGSERIAL PRIMARY KEY NOT NULL,
+    rating_id BIGSERIAL             NOT NULL REFERENCES book_rating (id),
+    text      VARCHAR(280)          NOT NULL,
+    created   TIMESTAMP WITHOUT TIME ZONE DEFAULT now()
 );
 
 CREATE TABLE shopping_cart
@@ -141,13 +140,16 @@ VALUES (346, 'romance', 'Joseph A. Tainter', 'Collapse of Complex Societies', 'h
 INSERT INTO book (copies_sold, genre, author, title, cover_url)
 VALUES (357, 'fantasy', 'Robert D. Putnam', 'Bowling Alone: The Collapse and Revival of American Community', 'https://www.image.com/32556');
 INSERT INTO book (copies_sold, genre, author, title, cover_url)
-VALUES (235, 'romance', 'Philip K. Howard', 'The Collapse of the Common Good: How America''s Lawsuit Culture Undermines Our Freedom', 'https://www.image.com/85687');
+VALUES (235, 'romance', 'Philip K. Howard',
+        'The Collapse of the Common Good: How America''s Lawsuit Culture Undermines Our Freedom',
+        'https://www.image.com/85687');
 INSERT INTO book (copies_sold, genre, author, title, cover_url)
 VALUES (963, 'fantasy', 'Nikola Tesla', 'My Inventions', 'https://www.image.com/4563643');
 INSERT INTO book (copies_sold, genre, author, title, cover_url)
 VALUES (734, 'romance', 'William Golding', 'Lord of the Flies', 'https://www.image.com/dsfgdsfs');
 INSERT INTO book (copies_sold, genre, author, title, cover_url)
-VALUES (246, 'fantasy', 'Ephraim Sevela/Antonina W. Bouis', 'We Were Not Like Other People', 'https://www.image.com/435gs');
+VALUES (246, 'fantasy', 'Ephraim Sevela/Antonina W. Bouis', 'We Were Not Like Other People',
+        'https://www.image.com/435gs');
 INSERT INTO book (copies_sold, genre, author, title, cover_url)
 VALUES (163, 'romance', 'Alice Sebold', 'The Lovely Bones', 'https://www.image.com/sdfs4323');
 INSERT INTO book (copies_sold, genre, author, title, cover_url)
@@ -237,6 +239,14 @@ VALUES (17, 202, 4);
 INSERT INTO book_rating (book_id, profile_id, rating)
 VALUES (18, 202, 2);
 
+INSERT INTO book_comment(rating_id, text)
+VALUES (1, 'Great book!');
+
+INSERT INTO book_comment(rating_id, text)
+VALUES (2, 'Awesome book!');
+
+INSERT INTO book_comment(rating_id, text)
+VALUES (3, 'Horrible book >:(');
 
 INSERT INTO wishlist(id, name, profile_id)
 VALUES (0, 'test 1', 201);
@@ -251,6 +261,3 @@ INSERT INTO wishlist(id, name, profile_id)
 VALUES (1, 'test 2', 202);
 INSERT INTO wishlist_books(wishlist_id, book_id)
 VALUES (1, 1);
-
-INSERT INTO book_comment(book_id, profile_id, text)
-VALUES (1, 201, 'Great book!');

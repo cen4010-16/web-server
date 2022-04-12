@@ -4,26 +4,18 @@ import com.fasterxml.jackson.annotation.JsonProperty;
 
 public class BookCommentDto {
 
-    @JsonProperty("book_id")
-    private final long bookId;
-
-    @JsonProperty("profile_id")
-    private final long profileId;
+    @JsonProperty("rating_id")
+    private final long ratingId;
 
     private final String text;
 
-    public BookCommentDto(final long bookId, final long profileId, final String text) {
-        this.bookId = bookId;
-        this.profileId = profileId;
+    public BookCommentDto(final long ratingId, final String text) {
+        this.ratingId = ratingId;
         this.text = text;
     }
 
-    public long getBookId() {
-        return bookId;
-    }
-
-    public long getProfileId() {
-        return profileId;
+    public long getRatingId() {
+        return ratingId;
     }
 
     public String getText() {

@@ -3,8 +3,7 @@ package com.textgeek.webserver.controller;
 import com.textgeek.webserver.dto.BookCommentDto;
 import com.textgeek.webserver.model.BookComment;
 import com.textgeek.webserver.repository.BookCommentRepository;
-import com.textgeek.webserver.repository.BookRepository;
-import com.textgeek.webserver.repository.ProfileRepository;
+import com.textgeek.webserver.repository.BookRatingRepository;
 import java.sql.Date;
 import java.time.Instant;
 import java.util.List;
@@ -19,16 +18,13 @@ import org.springframework.web.bind.annotation.RestController;
 public class BookCommentController {
 
     private final BookCommentRepository commentRepository;
-    private final BookRepository bookRepository;
-    private final ProfileRepository profileRepository;
+    private final BookRatingRepository bookRatingRepository;
 
     public BookCommentController(final BookCommentRepository commentRepository,
-        final BookRepository bookRepository,
-        final ProfileRepository profileRepository
+        final BookRatingRepository bookRatingRepository
     ) {
         this.commentRepository = commentRepository;
-        this.bookRepository = bookRepository;
-        this.profileRepository = profileRepository;
+        this.bookRatingRepository = bookRatingRepository;
     }
 
     @GetMapping("comments")
@@ -38,14 +34,13 @@ public class BookCommentController {
 
     @PostMapping("comments")
     public BookComment addComment(@RequestBody BookCommentDto commentDto) {
-        // TODO: PROPER ERROR HANDLING
-        var book = bookRepository.findById(commentDto.getBookId()).orElseThrow();
-        var profile = profileRepository.findById(commentDto.getProfileId()).orElseThrow();
+        var rating = bookRatingRepository.findById(commentDto.getRatingId()).orElseThrow();
         var comment = new BookComment();
-        comment.setBook(book);
-        comment.setProfile(profile);
         comment.setText(commentDto.getText());
         comment.setCreated(Date.from(Instant.now()));
+        comment.setRating(rating);
         return commentRepository.save(comment);
     }
+
+
 }

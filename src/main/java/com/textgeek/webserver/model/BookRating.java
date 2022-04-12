@@ -27,6 +27,7 @@ public class BookRating {
         referencedColumnName = "id"
     )
     private Book book;
+
     @ManyToOne
     @JoinColumn(
         name = "profile_id",
